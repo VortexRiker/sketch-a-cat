@@ -37,5 +37,5 @@ body
 
 .cell
 {
-    background-color: red;
+    border: 1px solid darkslategray
 }

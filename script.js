@@ -1,4 +1,36 @@
 const DEFAULT_GRID_SIZE = 16;
+let isMouseDown = false;
+
+function setColor(event)
+{
+    event.target.style.backgroundColor = "red";
+}
+
+function processMouseDown(event)
+{
+    isMouseDown = true;
+    setColor(event);
+}
+
+function processMouseUp(event)
+{
+    isMouseDown = false;
+}
+
+function processMouseHover(event)
+{
+    if (isMouseDown)
+    {
+        setColor(event);
+    }
+}
+
+function addCellLogic(cell)
+{
+    cell.addEventListener("mousedown" ,processMouseDown);
+    cell.addEventListener("mouseup", processMouseUp);
+    cell.addEventListener("mouseenter", processMouseHover);
+}
 
 function getCellSize(canvas, cellsInARow)
 {
@@ -12,7 +44,9 @@ function createCell(canvas, cellSize)
     const cell = document.createElement("div");
     cell.style.width = `${cellSize}px`;
     cell.style.height = `${cellSize}px`;
-
+    //cell.classList.add("cell");
+    addCellLogic(cell);
+        
     canvas.appendChild(cell);
 }
 
