@@ -61,16 +61,66 @@ function createCell(canvas, cellSize)
     canvas.appendChild(cell);
 }
 
-function createGrid(size)
+function createGrid(canvas, cellsInARow)
 {
-    const cells = size ** 2;
-    const canvas = document.querySelector(".canvas");
-    canvas.addEventListener("mouseleave", processMouseLeaveCanvas);
-    const cellSize = getCellSize(canvas, size);
+    const cells = cellsInARow ** 2;
+    const cellSize = getCellSize(canvas, cellsInARow);
     for (let i = 0; i < cells; ++i)
     {
         createCell(canvas, cellSize);
     }
 }
 
-createGrid(DEFAULT_GRID_SIZE);
+function initializeCanvas(cellsInARow)
+{
+    const canvas = document.querySelector(".canvas");
+    canvas.addEventListener("mouseleave", processMouseLeaveCanvas);
+    canvas.addEventListener("dragstart", processMouseLeaveCanvas);
+    canvas.addEventListener("mouseup", processMouseLeaveCanvas);
+    createGrid(canvas, cellsInARow);
+}
+
+function resetCanvas(cellsInARow)
+{
+    const canvas = document.querySelector(".canvas");
+    canvas.replaceChildren();
+    createGrid(canvas, cellsInARow);
+} 
+
+function getUserInput()
+{
+    let cellsInARow = Math.floor(Number(prompt("Please enter one dimension of canvas resolution\n(number of cells in one row/column from 1 to 100)", 16)));   
+
+    return processInput(cellsInARow);
+}
+
+function processInput(cellsInARow)
+{
+    if (cellsInARow && cellsInARow > 0)
+    {
+        if (cellsInARow > 100)
+        {
+            cellsInARow = 100;
+        }
+    }
+    else
+    {
+        cellsInARow = 16;
+    }
+    return cellsInARow;
+}
+
+function initializeButtons()
+{
+    const configure = document.querySelector(".configuration");
+    configure.addEventListener("click", processConfiguration);
+}
+
+function processConfiguration()
+{
+    const cellsInARow = getUserInput();
+    resetCanvas(cellsInARow);
+}
+
+initializeCanvas(DEFAULT_GRID_SIZE);
+initializeButtons();
