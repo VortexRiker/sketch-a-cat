@@ -28,7 +28,7 @@ body
 
 .canvas
 {
-    height: 90%;
+    height: 75%;
     aspect-ratio: 1 / 1;
     margin: 0;
     padding: 0;
@@ -39,5 +39,12 @@ body
 
 .cell
 {
-    border: 1px solid darkslategray
+    margin: 0;
+    padding: 0;
+    border: 1px solid black;
+}
+
+.grid
+{
+    border: 1px solid darkslategray;
 }

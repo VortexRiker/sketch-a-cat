@@ -25,6 +25,11 @@ function processMouseHover(event)
     }
 }
 
+function processMouseLeaveCanvas(event)
+{
+    isMouseDown = false;
+}
+
 function preventDragging(event)
 {
     event.preventDefault();
@@ -40,9 +45,9 @@ function addCellLogic(cell)
 
 function getCellSize(canvas, cellsInARow)
 {
-    let canvasWidth = canvas.clientWidth;
+    const canvasWidth = canvas.clientWidth;
 
-    return canvasWidth / cellsInARow;
+    return Math.floor(canvasWidth / cellsInARow);
 }
 
 function createCell(canvas, cellSize)
@@ -60,6 +65,7 @@ function createGrid(size)
 {
     const cells = size ** 2;
     const canvas = document.querySelector(".canvas");
+    canvas.addEventListener("mouseleave", processMouseLeaveCanvas);
     const cellSize = getCellSize(canvas, size);
     for (let i = 0; i < cells; ++i)
     {
