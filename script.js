@@ -25,11 +25,17 @@ function processMouseHover(event)
     }
 }
 
+function preventDragging(event)
+{
+    event.preventDefault();
+}
+
 function addCellLogic(cell)
 {
     cell.addEventListener("mousedown" ,processMouseDown);
     cell.addEventListener("mouseup", processMouseUp);
     cell.addEventListener("mouseenter", processMouseHover);
+    cell.addEventListener("dragstart", preventDragging);
 }
 
 function getCellSize(canvas, cellsInARow)
@@ -44,7 +50,7 @@ function createCell(canvas, cellSize)
     const cell = document.createElement("div");
     cell.style.width = `${cellSize}px`;
     cell.style.height = `${cellSize}px`;
-    //cell.classList.add("cell");
+    cell.classList.add("cell");
     addCellLogic(cell);
         
     canvas.appendChild(cell);
