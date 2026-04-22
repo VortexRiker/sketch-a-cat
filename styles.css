@@ -28,19 +28,20 @@ body
 
 .canvas
 {
-    height: 80%;
+    height: 90%;
     aspect-ratio: 1 / 1;
     margin: 0;
     padding: 0;
     display: flex;
     flex-wrap: wrap;
-    border: 3px solid darkslategray;
+    border: 5px solid darkslategray;
 }
 
 .cell
 {
     margin: 0;
     padding: 0;
+    flex: 0 0 auto;
     border: 1px solid darkslategray;
 }
 

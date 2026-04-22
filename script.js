@@ -46,8 +46,9 @@ function addCellLogic(cell)
 function getCellSize(canvas, cellsInARow)
 {
     const canvasWidth = canvas.clientWidth;
+    const roundingValue = 1 / (3 * cellsInARow);
 
-    return Math.floor(canvasWidth / cellsInARow);
+    return canvasWidth / cellsInARow - roundingValue;
 }
 
 function createCell(canvas, cellSize)
@@ -75,8 +76,8 @@ function initializeCanvas(cellsInARow)
 {
     const canvas = document.querySelector(".canvas");
     canvas.addEventListener("mouseleave", processMouseLeaveCanvas);
-    canvas.addEventListener("dragstart", processMouseLeaveCanvas);
-    canvas.addEventListener("mouseup", processMouseLeaveCanvas);
+    canvas.addEventListener("dragstart", preventDragging);
+    canvas.addEventListener("mouseup", preventDragging);
     createGrid(canvas, cellsInARow);
 }
 
