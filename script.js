@@ -1,4 +1,4 @@
-const DEFAULT_GRID_SIZE = 16;
+const DEFAULT_GRID_SIZE = 100;
 let isMouseDown = false;
 
 function setColor(event)
@@ -43,19 +43,10 @@ function addCellLogic(cell)
     cell.addEventListener("dragstart", preventDragging);
 }
 
-function getCellSize(canvas, cellsInARow)
-{
-    const canvasWidth = canvas.clientWidth;
-    const roundingValue = 1 / (3 * cellsInARow);
-
-    return canvasWidth / cellsInARow - roundingValue;
-}
-
-function createCell(canvas, cellSize)
+function createCell(canvas, cellsInARow)
 {
     const cell = document.createElement("div");
-    cell.style.width = `${cellSize}px`;
-    cell.style.height = `${cellSize}px`;
+    cell.style.flex = `1 0 ${100 / cellsInARow}%`
     cell.classList.add("cell");
     addCellLogic(cell);
         
@@ -65,10 +56,9 @@ function createCell(canvas, cellSize)
 function createGrid(canvas, cellsInARow)
 {
     const cells = cellsInARow ** 2;
-    const cellSize = getCellSize(canvas, cellsInARow);
     for (let i = 0; i < cells; ++i)
     {
-        createCell(canvas, cellSize);
+        createCell(canvas, cellsInARow);
     }
 }
 
@@ -77,7 +67,7 @@ function initializeCanvas(cellsInARow)
     const canvas = document.querySelector(".canvas");
     canvas.addEventListener("mouseleave", processMouseLeaveCanvas);
     canvas.addEventListener("dragstart", preventDragging);
-    canvas.addEventListener("mouseup", preventDragging);
+    canvas.addEventListener("mouseup", processMouseLeaveCanvas);
     createGrid(canvas, cellsInARow);
 }
 
