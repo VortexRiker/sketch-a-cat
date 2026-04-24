@@ -23,7 +23,7 @@ body
     flex-direction:column;
     justify-content: center;
     align-items: center;
-    gap: 5px;
+    gap: 20px;
 }
 
 .canvas
@@ -35,13 +35,47 @@ body
     display: flex;
     flex-wrap: wrap;
     border: 5px solid darkslategray;
+    /* align-content: center; */
+}
+
+.controls
+{
+    height: 100px;
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid red
+}
+
+.button
+{
+    padding: 10px;
+    margin: 0px;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: sans-serif;
+    background-color:rgb(105, 186, 159);
+    color: darkslategray;
+    border: 3px solid darkslategray;
+}
+button:hover
+{
+    background-color:rgb(131, 223, 192);
+    font-size: 28px;
+}
+button:active
+{
+    background-color:rgb(185, 225, 212);
+    font-size: 26px;
 }
 
 .cell
 {
-    margin: 0;
+    aspect-ratio: 1 /1;
+    margin: 0px;
     padding: 0;
-    flex: 0 0 auto;
+    flex: 1 0 calc(100% / 100);
     border: 1px solid darkslategray;
 }
 
