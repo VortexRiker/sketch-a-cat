@@ -35,12 +35,11 @@ body
     display: flex;
     flex-wrap: wrap;
     border: 5px solid darkslategray;
-    /* align-content: center; */
 }
 
 .controls
 {
-    height: 100px;
+
     display: flex;
     gap: 30px;
     justify-content: center;
@@ -50,14 +49,17 @@ body
 
 .button
 {
-    padding: 10px;
-    margin: 0px;
+    height: 50px;
+    width: 140px;
+    /* padding: 10px; */
+    /* margin: 0px; */
     font-size: 24px;
     font-weight: bold;
     font-family: sans-serif;
     background-color:rgb(105, 186, 159);
     color: darkslategray;
     border: 3px solid darkslategray;
+    border-radius: 15px;
 }
 button:hover
 {
@@ -73,10 +75,8 @@ button:active
 .cell
 {
     aspect-ratio: 1 /1;
-    margin: 0px;
+    margin: 0;
     padding: 0;
-    flex: 1 0 calc(100% / 100);
-    border: 1px solid darkslategray;
 }
 
 .grid

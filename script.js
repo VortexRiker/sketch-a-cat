@@ -1,4 +1,5 @@
-const DEFAULT_GRID_SIZE = 100;
+let cellsInARow = 16;
+let isGridEnabled = false;
 let isMouseDown = false;
 
 function setColor(event)
@@ -48,6 +49,10 @@ function createCell(canvas, cellsInARow)
     const cell = document.createElement("div");
     cell.style.flex = `1 0 ${100 / cellsInARow}%`
     cell.classList.add("cell");
+    if(isGridEnabled)
+    {
+        toggleGrid(cell);
+    }
     addCellLogic(cell);
         
     canvas.appendChild(cell);
@@ -71,7 +76,7 @@ function initializeCanvas(cellsInARow)
     createGrid(canvas, cellsInARow);
 }
 
-function resetCanvas(cellsInARow)
+function resetCanvas()
 {
     const canvas = document.querySelector(".canvas");
     canvas.replaceChildren();
@@ -101,17 +106,48 @@ function processInput(cellsInARow)
     return cellsInARow;
 }
 
-function initializeButtons()
+function initializeResetButton()
 {
-    const configure = document.querySelector(".configuration");
+    const reset = document.querySelector("#reset");
+    reset.addEventListener("click", resetCanvas);
+}
+
+function initializeConfigureButton()
+{
+    const configure = document.querySelector("#configuration");
     configure.addEventListener("click", processConfiguration);
+}
+
+function initializeGridButton()
+{
+    const grid = document.querySelector("#grid");
+    grid.addEventListener("click", processGrid);
+}
+
+function initializeControls()
+{
+   initializeResetButton();
+   initializeConfigureButton();
+   initializeGridButton();
 }
 
 function processConfiguration()
 {
-    const cellsInARow = getUserInput();
+    cellsInARow = getUserInput();
     resetCanvas(cellsInARow);
 }
 
-initializeCanvas(DEFAULT_GRID_SIZE);
-initializeButtons();
+function toggleGrid(cell)
+{
+    cell.classList.toggle("grid");
+}
+
+function processGrid()
+{
+    const cells = document.querySelectorAll(".cell");
+    cells.forEach(toggleGrid);
+    isGridEnabled = !isGridEnabled;
+}
+
+initializeCanvas(cellsInARow);
+initializeControls();
