@@ -1,3 +1,5 @@
+const ALPHA_STEP = 0.1;
+
 let cellsInARow = 16;
 
 let isGridEnabled = false;
@@ -6,10 +8,25 @@ let isMouseDown = false;
 let red = 0;
 let green = 0;
 let blue = 0;
+let alpha = ALPHA_STEP;
 
 function getRandomNumber(max)
 {
     return Math.floor(Math.random() * max);
+}
+
+function resetAlpha()
+{
+    alpha = ALPHA_STEP;
+}
+
+function incrementAlpha()
+{
+    alpha += ALPHA_STEP;
+    if (alpha > 1.0)
+    {
+        alpha = 1.0;
+    }
 }
 
 function generateColor()
@@ -21,13 +38,14 @@ function generateColor()
 
 function setColor(event)
 {
-    event.target.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+    event.target.style.backgroundColor = `rgba(${red}, ${green}, ${blue}, ${alpha})`;
 }
 
 function processMouseDown(event)
 {
     isMouseDown = true;
     generateColor();
+    resetAlpha();
     setColor(event);
 }
 
