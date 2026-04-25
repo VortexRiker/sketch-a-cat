@@ -1,15 +1,33 @@
 let cellsInARow = 16;
+
 let isGridEnabled = false;
 let isMouseDown = false;
 
+let red = 0;
+let green = 0;
+let blue = 0;
+
+function getRandomNumber(max)
+{
+    return Math.floor(Math.random() * max);
+}
+
+function generateColor()
+{
+    red = getRandomNumber(255);
+    green = getRandomNumber(255);
+    blue = getRandomNumber(255);
+}
+
 function setColor(event)
 {
-    event.target.style.backgroundColor = "red";
+    event.target.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
 }
 
 function processMouseDown(event)
 {
     isMouseDown = true;
+    generateColor();
     setColor(event);
 }
 
