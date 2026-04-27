@@ -51,7 +51,6 @@ body
     flex: 0 0 25%;
     display: flex;
     flex-direction: column;
-    border: 1px solid red;
 }
 
 .logo
@@ -107,7 +106,7 @@ p
 
 .canvas
 {
-    height: 90%;
+    height: 92%;
     aspect-ratio: 1 / 1;
     margin: 0;
     padding: 0;
