@@ -18,17 +18,74 @@ body
     height: 100vh;
     margin: 0;
     padding: 0;
-    background-color: rgb(238, 238, 199);
+    background-color: rgb(211, 239, 189);
     display: flex;
-    flex-direction:column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
+    flex-direction:row;
 }
 
+.unselectable
+{
+    user-select: none;
+}
+
+.left
+{
+    flex: 0 0 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid red;
+    gap: 5px;
+}
+
+.center
+{
+    flex: 0 0 50%;
+    display: flex;
+    padding-top: 5px;
+    flex-direction: column;
+    align-items: center;
+
+    border: 1px solid red;
+}
+
+.right
+{
+    flex: 0 0 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid red;
+}
+
+.logo
+{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.picture
+{
+    width: 150px;
+    height: 150px;
+    margin: 5px;
+    border: 5px solid rgb(8, 139, 95);
+    border-radius: 50%;
+}
+
+.description
+{
+    border: 1px solid blue;
+    font-size: 28px;
+    font-weight: 400;
+    padding: 0;
+    margin: 10px;
+}
 .canvas
 {
-    height: 90%;
+    height: 95%;
     aspect-ratio: 1 / 1;
     margin: 0;
     padding: 0;
@@ -39,20 +96,25 @@ body
 
 .controls
 {
-
+    margin: 5px;
     display: flex;
-    gap: 30px;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid red
+    flex-direction:row;
+    gap: 50px;
+}
+
+.title
+{
+    padding: 0px;
+    margin: 5px;
+    color: rgb(8, 139, 95);
+    font-size:42px;
+    font-weight: bold;
 }
 
 .button
 {
-    height: 50px;
-    width: 140px;
-    /* padding: 10px; */
-    /* margin: 0px; */
+    height: 60px;
+    width: 150px;
     font-size: 24px;
     font-weight: bold;
     font-family: sans-serif;

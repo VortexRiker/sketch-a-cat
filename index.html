@@ -3,16 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sketch a Cat</title>
+    <title>Sketch A Cat</title>
     <link rel="stylesheet" href="styles.css">
     <script type="module" src="script.js"></script>
 </head>
 <body>
-    <div class="canvas"></div>
-    <div class="controls">
-        <button id="reset" class="button">Reset</button>
-        <button id="configuration" class="button">Configure</button>
-        <button id="grid" class="button">Grid</button>
+    <div class="left">
+        <div class ="logo">
+            <img class="picture unselectable" src="images/borkins.png" alt="A photo of a very beautiful and impressive Cat" width="300" height="300">
+            <h1 class="title unselectable">Sketch-A-Cat</h1>
+        </div>
+        <p class="description unselectable">
+            Welcome to a digital canvas of Lord Boris The Golden!
+        </p>
+        <p class="description unselectable"> 
+            A place where the most beautiful pictures of cats come to live in all colors!
+            Or maybe not even cats? All kinds of creatures are welcome to be depicted in this canvas
+        </p >
+        <p class="description unselectable">
+            Have fun and enjoy your creations!
+        </p>
     </div>
+    <div class="center">
+        
+        <div class="canvas"></div>
+        <div class="controls">
+        <button id="reset" class="button unselectable">Reset</button>
+        <button id="configuration" class="button unselectable">Configure</button>
+        <button id="grid" class="button unselectable">Grid</button>
+        </div>
+    </div>
+    <div class="right">
+        <h2 class="chapter">Instructions</h2>
+        <p class="description">
+            Welcome to Boris's digital canvas! 
+            Press and Hold LMB to draw, but beware, color of the brush is selected randomly!
+            Use controls on the right to reset your drawing,
+            change canvas resolution, or to show/hide grid.
+            Enjoy your creations!
+        </p>
+    </div>
+    
+    
 </body>
 </html>
